@@ -11,6 +11,7 @@ import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
@@ -89,7 +90,14 @@ public class NewJFrame extends javax.swing.JFrame {
     }
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        Exit();
+       System.gc();
+       JLayeredPane bodyFrame = (JLayeredPane) getParent();
+       bodyFrame.removeAll();
+       NewJPanel formReg = new NewJPanel();
+       formReg.setSize(850, 530);
+       bodyFrame.add(formReg);
+       formReg.setVisible(true);
+       bodyFrame.moveToFront(formReg);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
